@@ -1,0 +1,31 @@
+<center>
+  <div class="container">
+    <h3>Expense details</h3>
+    <table  class="table table-bordered table-striped">
+
+        <tr>  <td> Claimer name </td>
+              <td><%= @expense.claimer_name %></td>
+        </tr>
+        <tr> <td> Expense date</td>
+              <td><%= @expense.expense_date %></td>
+        </tr>
+        <tr>  <td> Description </td>
+              <td><%= @expense.description %></td>
+        </tr>
+        <tr>  <td> Amount </td>
+              <td><%= @expense.amount %> EUR</td>
+        </tr
+        <tr>  <td> Status </td>
+              <td><%= @expense.approved %></td>
+        </tr>
+        <% unless @expense.nil_image %>
+        <tr>  <td> Image </td>
+              <td><%= image_tag (@expense.image.url) %></td>
+        </tr>
+        <% end %>
+      </table>
+
+<%= link_to 'Edit', edit_expense_path(@expense) , class: "btn btn-info" %>
+
+  </div>
+</center>

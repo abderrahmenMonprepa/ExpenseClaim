@@ -1,0 +1,43 @@
+<div id="approve_expense"></div>
+<table class="table table-striped" id="expense_list" >
+  <thead>
+    <tr>
+      <th>Claimer name</th>
+      <th>Expense date</th>
+      <th>Description</th>
+      <th>Amount (EUR)</th>
+      <th>Approved</th>
+      <th>Approve Expense</th>
+      <th>Display</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+    <tr>
+        <td><%= expense.claimer_name %></td>
+        <td><%= expense.format_date %></td>
+        <td><%= expense.description %></td>
+        <td><%= expense.amount %></td>
+        <%= expense.display_approved %>
+        <% if expense.approved? %>
+        <td></td>
+        <% else %>
+        <% if current_user.user_type == "admin"%>
+        <td>
+          <%= link_to "ApproveExpense" , approve_expense_path(expense), class: "btn btn-info", data: {confirm: 'Are you sure?'}, remote: true %>     
+          </td>
+          <% else %>
+          <td></td>
+          <% end %>
+        <% end %>
+        
+        <td><%= link_to 'Display', expense %></td>
+        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>

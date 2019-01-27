@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+
+<div class="container">
+
+<h1>Expenses</h1>
+
+<%= render 'expenses/list_expenses'%>
+<br>
+<%= link_to new_expense_path do %><span class="btn btn-primary">Add expense claim</span><% end %>
+<% else %>
+  <%= render 'devise/sessions/new' %>
+<% end %>
+
+</div>
+
+
+<!-- For Datatable -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#expense_list').DataTable();
+} );
+</script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>

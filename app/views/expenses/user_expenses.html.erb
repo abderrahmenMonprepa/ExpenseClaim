@@ -1,0 +1,31 @@
+<% if user_signed_in? %>
+
+<% if @expenses.count > 0 %>
+	<div class="container">
+	<h1>Expenses</h1>
+
+<%= render 'expenses/list_expenses'%>
+
+	<%= link_to new_expense_path do %><span class="btn btn-primary">Add expense claim</span><% end %>
+<% else %>
+	<div class="container">
+		<h3>No expenses for you.</h3>
+		<%= link_to new_expense_path do %><span class="btn btn-primary">Add expense claim</span><% end %>
+		<% end %>
+	</div>
+
+<% else %>
+	<%= render 'devise/sessions/new' %>
+<% end %>
+
+</div>
+
+<!-- For Datatable -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#expense_list').DataTable();
+} );
+</script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>

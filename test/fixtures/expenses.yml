@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  claimer_name: MyString
+  expense_date: 2019-01-19 20:27:44
+  description: MyText
+  amount: 1.5
+  approved: false
+
+two:
+  claimer_name: MyString
+  expense_date: 2019-01-19 20:27:44
+  description: MyText
+  amount: 1.5
+  approved: false

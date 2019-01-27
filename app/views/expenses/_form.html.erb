@@ -1,0 +1,53 @@
+<div class="container">  
+  <center><h3>Expense</h3></center>
+  <%= form_with(model: expense, local: true) do |form| %>
+    <% if expense.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+        <ul>
+        <% expense.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% if current_user.user_type == "admin" %>
+      <% get_users %>
+      <div class="form-group">
+        <%= form.select :user_id, options_from_collection_for_select(@users, 'id', 'first_name' ) , :required => true %>
+      
+      </div>
+    <% else %>
+        <%= form.hidden_field :user_id , value: current_user.id %>
+    <% end %>
+
+    <div class="form-group">
+        <%= form.date_field :expense_date, id: :expense_date , class: "form-control"%>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, id: :expense_description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :amount %>
+      <%= form.number_field :amount, id: :expense_amount, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :image , 'Receipt' %>
+      <%= form.file_field :image, class: "form-control" %>
+    </div>
+    <center>
+      <div class="actions">
+        <%= form.submit "Submit" , class: "btn btn-primary" %>
+      </div>
+    </center>
+  <% end %>
+<br>
+</div>
