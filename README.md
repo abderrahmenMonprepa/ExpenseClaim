@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails Version: 5.2.2
+Ruby Version: 2.4.4
 
-Things you may want to cover:
+****** Database *******
 
-* Ruby version
+rails db:create
+rails db:migrate
+rails db:seed
 
-* System dependencies
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
